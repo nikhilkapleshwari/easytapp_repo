@@ -1,0 +1,40 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-dark">
+    <a class="navbar-brand" routerLink="/">EasyTapp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+      aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="dashboard">Schedule</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+          
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fa fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default bg-dark navbar-dark" aria-labelledby="navbarDropdownMenuLink-333">
+              <span class="dropdown-item white-name" *ngIf="authService.isLoggedIn()" [ngClass]="{'green-name':authService.getIsAccountVerified() && authService.isLoggedIn()}" [innerHTML]="authService.getUserName()"></span>
+              <a class="dropdown-item" *ngIf="!authService.getIsAccountVerified() && authService.isLoggedIn()" (click)="verifyAccount()"><button class="btn white-name my-2 my-sm-0">Verify account</button></a>
+            <a class="dropdown-item" *ngIf="authService.isLoggedIn()" (click)="changePassword()"><button class="btn white-name my-2 my-sm-0">Change password</button></a>
+            <a class="dropdown-item" *ngIf="!authService.isLoggedIn()" routerLink="login"><button class="btn white-name my-2 my-sm-0">Login</button></a>
+            <a class="dropdown-item" *ngIf="authService.isLoggedIn()" (click)="logout()"><button class="btn white-name my-2 my-sm-0" >Logout</button></a>
+            
+          </div>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  <!--/.Navbar -->

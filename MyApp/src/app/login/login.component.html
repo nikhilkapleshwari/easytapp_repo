@@ -1,0 +1,36 @@
+<div class="loginForm">
+<form #f="ngForm" [formGroup]="form" (ngSubmit)="signIn(f.value)">
+  <div *ngIf="form.errors" class="alert alert-danger">
+    Username or Password is invalid.
+  </div>
+  
+    <div class="form-group">
+    <input 
+      formControlName="userName"
+      type="text" class="form-control" placeholder="username">
+      <div *ngIf="userName.pending">Checking for uniqueness.....</div>
+      <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
+        <div *ngIf="userName.errors.required">UserName is requiered</div>
+        <div *ngIf="userName.errors.minlength">UserName should be min {{userName.errors.minlength.requiredLength}} chars</div>
+        <div *ngIf="userName.errors.cannotContainSpace">UserName cannot contain space.</div>
+        <div *ngIf="userName.errors.shouldBeUnique">UserName is already taken.</div>
+      </div>
+  </div>
+  
+  <div class="form-group noMargin">
+      
+      <input 
+        formControlName="password"
+        type="password" class="form-control" placeholder="password">
+  </div>
+  
+  <div *ngIf="invalidLogin" class="alert alert-danger">
+    Invalid Username and/or password.
+  </div>
+
+    
+  <button class="btn btn-primary withMargin" [disabled]="!f.valid">Login</button>
+  <p class="message">Not registered? <a href="signup">Create an account</a></p> 
+  </form>
+  <a class="forgot"  role="button" (click)="forgotPwd()">Forgot password</a>  
+</div>

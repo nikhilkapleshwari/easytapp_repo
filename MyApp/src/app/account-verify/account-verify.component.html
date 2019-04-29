@@ -1,0 +1,20 @@
+<div class="verifyAccountForm">
+    <p>Verify Account</p>
+    <form #f="ngForm" [formGroup]="form" (ngSubmit)="verifyAccount(f.value)">
+    
+
+        <div class="form-group withMargin">
+            
+                <input 
+                  formControlName="vCode"
+                  type="password" class="form-control" placeholder="verification code">
+                  <div *ngIf="invalidvCode" class="alert alert-danger">invalid verification code</div>
+              </div>
+      <!-- [ngClass]="{'disabled-sendvCode':flag}" -->
+        <button class="btn btn-primary withMargin" [disabled]="!f.valid">Verify</button>
+        <div class="message">Don't have code? 
+          <a *ngIf="!getFlag()" (click)="sendvCode(f.value)">send verification code again</a>
+          <a class="disabled-sendvCode"*ngIf="getFlag()">Code has been sent already.</a>
+        </div>
+        </form>  
+      </div>

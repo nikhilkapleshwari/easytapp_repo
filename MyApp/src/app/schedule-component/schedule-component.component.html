@@ -1,0 +1,46 @@
+<p>
+  schedule
+</p>
+
+<div class="container">
+    <div class="row">
+      
+          <button routerLink="/dashboard">DashBoard</button>
+          <div class="col-md-12">
+          <h4>Schedule your Search</h4>
+
+          
+          <input [disabled]="data?.length > 2" #searchString type="text" placeholder="Enter search content">
+          <button [disabled]="data?.length > 2" (click)="addToSearchArray(searchString.value);searchString.value=''">Save</button>
+          <div class="alert alert-danger"*ngIf="data?.length > 2">You can only schedule max 3 search content</div>
+          <form #f="ngForm" (ngSubmit)="process(f)">
+          <div class="table-responsive">
+  
+                <table id="mytable" class="table table-bordred table-striped">
+                     
+                     <thead>
+                     <th>Search content</th>
+                        <th>Delete</th>
+                     </thead>
+      
+                     <tbody *ngFor="let item of data; let rowNo=index">
+                      <tr>
+                        <td><input type="text" [(ngModel)]="item" name="item{{rowNo}}"></td>
+      
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                          <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)="deleteItem(rowNo)"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+      
+                      </tr>
+      
+                    </tbody>
+                </table>
+                <button class="btn btn-success pull-right" type="submit">Save Me</button>
+                <button class="btn btn-success pull-right" type="submit">Save</button>
+          </div>
+        </form>
+        </div>
+      
+      </div>
+  </div>
+
+

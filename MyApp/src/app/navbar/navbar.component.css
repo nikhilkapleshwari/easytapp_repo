@@ -1,0 +1,27 @@
+.dropdown{
+    color: white;
+}
+
+.dropdown-item:hover {  
+    
+    background-color:#383b3f;
+}
+
+.white-name{
+    color:white;
+}
+
+.green-name{
+    color:#4CAF50;
+}
+
+.red-name{
+    color:red;
+}
+.btn{
+    background: transparent;
+}
+
+.fa-check{
+    color: #4CAF50;
+}

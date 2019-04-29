@@ -1,0 +1,61 @@
+
+<!-- <div class="container">
+    <div class="row">
+            
+             
+        <div class="col-sm-12">
+                
+                <form #f="ngForm" [formGroup]="form" (ngSubmit)="process(f.value)">
+                    <div class="search-group ">
+                        <input type="text" formControlName="searchString" (input)="onSearchChange($event.target.value)" name="searchString" id="searchString" placeholder="Search here"> 
+                        <span class="input-group-btn">
+                            <button [disabled]="form.get('searchString').invalid" >Search</button>
+                        </span>
+                    </div>
+                    <div *ngIf="form.get('searchString').touched && form.get('searchString').invalid" class="alert alert-danger">Enter search content</div>
+                    <div *ngIf="loader" class="alert alert-info">searching...</div>
+                    <div *ngIf="noDataFound" class="alert alert-danger">No torrent found</div>
+            
+                </form>
+                <br>
+                <div>
+                        <ul class="list-group list-group-flush" *ngFor="let item of data">
+                            <li class="list-group-item list-group-item-action list-group-item-success"><a class="list-group-item list-group-item-action list-group-item-success" [href]="item.file">{{item.name}}</a></li>
+                        </ul>
+                </div>
+            
+        </div>
+    </div>
+</div> -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+                <form #f="ngForm" [formGroup]="form" (ngSubmit)="process(f.value)">
+                        <div class="search-group ">
+                            <input type="text" formControlName="searchString" (input)="onSearchChange($event.target.value)" name="searchString" id="searchString" placeholder="Search here"> 
+                            <span class="input-group-btn">
+                                <button [disabled]="form.get('searchString').invalid" >Search</button>
+                            </span>
+                        </div>
+                        <div *ngIf="form.get('searchString').touched && form.get('searchString').invalid" class="alert alert-danger">Enter search content</div>
+                        <div *ngIf="loader" class="alert alert-info">searching...</div>
+                        <div *ngIf="noDataFound" class="alert alert-danger">No torrent found</div>
+                
+                    </form>
+                    <br>
+                    <div>
+                            <ul class="list-group list-group-flush" *ngFor="let item of data">
+                                <li class="list-group-item list-group-item-action list-group-item-success"><a class="list-group-item list-group-item-action list-group-item-success overflow" [href]="item.file">{{item.name}}</a></li>
+                            </ul>
+                    </div>
+             
+        </div>
+    </div>
+</div>
+
+
+
+

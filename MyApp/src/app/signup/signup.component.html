@@ -1,0 +1,51 @@
+<div class="signupForm">
+<form #f="ngForm" [formGroup]="form" (ngSubmit)="signUp(f.value)">
+    <div *ngIf="form.errors" class="alert alert-danger">
+      Username or Password is invalid.
+    </div>
+
+      <div class="form-group">
+      <input 
+        formControlName="userName"
+        type="text" class="form-control" placeholder="user name">
+    
+        <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
+          <div *ngIf="userName.errors.required">User name is requiered.</div>
+          <div *ngIf="userName.errors.pattern">User name must be an email-id.</div>
+          <div *ngIf="userName.errors.minlength">User name should be min {{userName.errors.minlength.requiredLength}} chars</div>
+          <div *ngIf="userName.errors.cannotContainSpace">User name cannot contain space.</div>
+          <div *ngIf="userName.errors.shouldBeUnique">User name is already taken.</div>
+        </div>
+    
+      </div>
+    <div class="form-group withMargin">
+        
+        <input 
+          formControlName="password"
+          type="password" class="form-control" placeholder="password">
+
+          <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+              <div *ngIf="password.errors.required">Password is requiered</div>
+              <div *ngIf="password.errors.cannotContainSpace">Password cannot contain space.</div>
+              <div *ngIf="password.errors.minlength">Password should be min {{password.errors.minlength.requiredLength}} chars</div>
+            </div>
+      </div>
+
+      <div class="form-group noMargin">
+          <input 
+          formControlName="confirmPassword"
+          type="password" class="form-control" placeholder="confirm password">
+          <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.matchPassword">Password not match</div>
+
+        </div>
+ 
+
+    <div *ngIf="invaliSignup" class="alert alert-danger">
+      {{errorString}}
+    </div>
+  
+      
+    <button class="btn btn-primary withMargin" [disabled]="!f.valid">Signup</button>
+    
+    </form>  
+  </div>

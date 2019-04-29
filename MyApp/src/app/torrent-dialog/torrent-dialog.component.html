@@ -1,0 +1,23 @@
+<div class="my-style">
+        
+    
+<h2 mat-dialog-title>{{searchString}}</h2>
+
+<mat-dialog-content>
+                  
+        <p *ngIf="torrentArray===undefined">Currently no torrent available!</p>
+    
+        <div class="list-container">    
+                <ul class="list-group list-group-flush" *ngFor="let item of torrentArray">
+                    <li class="list-group-item list-group-item-action"><a class="overflow" [attr.href]="item.file">{{item.name}}</a></li>
+                </ul>
+                </div>
+        
+</mat-dialog-content>
+
+<mat-dialog-actions>
+        <button class="mat-raised-button" (click)="close()"><i class="fa fa-close"></i></button>         
+        
+    </mat-dialog-actions>
+
+</div>

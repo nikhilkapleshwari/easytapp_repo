@@ -1,0 +1,16 @@
+<div class="forgotPwdForm">
+  <p>Forgot Password</p>
+  <form #f="ngForm" [formGroup]="form" (ngSubmit)="forgotPwd(f.value)">
+  
+
+      <div class="form-group withMargin">
+          
+              <input 
+                formControlName="userName"
+                type="text" class="form-control" placeholder="email id">
+            </div>
+    <!-- [ngClass]="{'disabled-sendvCode':flag}" -->
+      <button class="btn btn-primary withMargin" [disabled]="!f.valid">Send reset link</button>
+      
+      </form>  
+    </div>
