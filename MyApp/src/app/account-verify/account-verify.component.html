@@ -13,8 +13,10 @@
       <!-- [ngClass]="{'disabled-sendvCode':flag}" -->
         <button class="btn btn-primary withMargin" [disabled]="!f.valid">Verify</button>
         <div class="message">Don't have code? 
-          <a *ngIf="!getFlag()" (click)="sendvCode(f.value)">send verification code again</a>
-          <a class="disabled-sendvCode"*ngIf="getFlag()">Code has been sent already.</a>
+          <a *ngIf="!getFlag();else elseBlock" (click)="sendvCode(f.value)">send verification code again</a>
+          <br>
+          <ng-template #elseBlock>send code again enable in {{tick}} s</ng-template>    
         </div>
-        </form>  
+        
+        </form> 
       </div>

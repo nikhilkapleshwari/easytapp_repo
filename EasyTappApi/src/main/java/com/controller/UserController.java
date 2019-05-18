@@ -93,7 +93,6 @@ public class UserController {
 
 	@RequestMapping(path = "/changePassword", method = RequestMethod.POST)
 	public ResponseEntity<Response> updateUserPassword(@RequestBody String json) {
-		System.out.println("Updating user password!");
 		JsonNode jsonNode = JsonConverter.getJsonNode(json);
 		String userName = jsonNode.get("userName").textValue();
 		String password = jsonNode.get("password").textValue();

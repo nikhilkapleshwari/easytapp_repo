@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "@auth0/angular-jwt": "^2.0.0",
+    "@ngx-pwa/local-storage": "^7.4.2",
     "angular-font-awesome": "^3.1.2",
     "angular2-jwt": "^0.2.3",
     "bootbox": "^4.4.0",

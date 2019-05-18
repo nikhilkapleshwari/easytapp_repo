@@ -4,6 +4,8 @@ import { Http } from '@angular/http';
 import { HttpHeaders,HttpClient } from '@angular/common/http';
 import {DomSanitizer} from '@angular/platform-browser';
 import { RestUrlService } from '../service/rest-url.service';
+import {TimerObservable} from "rxjs/observable/TimerObservable";
+import { Subscription } from 'rxjs';
 import * as bootbox from '../../../node_modules/bootbox/bootbox.js';
 declare var bootbox:any;
 
@@ -20,6 +22,9 @@ export class SearchComponentComponent {
   noDataFound:boolean;
   loader:boolean;
 
+  private subscription: Subscription;
+  tick;
+
   form=new FormGroup({
     searchString:new FormControl('',Validators.required)
   });
@@ -29,7 +34,13 @@ export class SearchComponentComponent {
     
   }
   
-  
+  ngOnInit() {
+    // let timer = TimerObservable.create(5000);
+    // this.subscription = timer.subscribe(t => {
+    //   this.tick = t;
+    //   console.log('tick:'+this.tick);
+    // });    
+  }
   process(searchData){
         this.hideLoader();
         this.data=null;

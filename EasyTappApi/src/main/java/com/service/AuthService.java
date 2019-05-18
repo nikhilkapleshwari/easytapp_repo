@@ -1,6 +1,5 @@
 package com.service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -73,7 +72,8 @@ public class AuthService {
 		User user = userService.getUser(userName);
 
 		if (Objects.nonNull(user)) {
-			return userService.updateUser(userName, ImmutableMap.of("vCode", vCode, "vCodeValidTs", LocalDate.now()));
+			return userService.updateUser(userName,
+					ImmutableMap.of("vCode", vCode, "vCodeValidTs", LocalDateTime.now()));
 		}
 		return Boolean.FALSE;
 	}
