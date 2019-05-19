@@ -34,13 +34,12 @@ function execute(searchModel,callback){
         page: 0,
         ordering: 'uploaded' 
       }).then(response =>{
-        //console.log("response:"+JSON.stringify(response));
-        
         var downloadPath=propertyReader.getProperty('DOWNLOAD_PATH');
         fs.writeFileSync(downloadPath+searchModel.userEmail,JSON.stringify(response));
 
         var scheduleUserDataPath=propertyReader.getProperty('SCHEDULE_USERDATA_PATH');
-        if(searchModel.isScheduledSearch==1)
+        
+        if(searchModel.isScheduledSearch==1 && JSON.stringify(response) !== '[]')
         fs.writeFileSync(scheduleUserDataPath+searchModel.userEmail+'/'+searchModel.searchString+'.etd',JSON.stringify(response));
         var obj=JSON.parse(JSON.stringify(response));
         callback(obj);
